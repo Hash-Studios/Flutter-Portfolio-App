@@ -18,6 +18,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: "^0.7.3"
+
 flutter:
   uses-material-design: true
 
@@ -31,3 +33,7 @@ flutter:
     - family: Source Sans Pro
       fonts:
         - asset: fonts/SourceSansPro-Regular.ttf
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "icon/icon.png"
