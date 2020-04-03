@@ -14,31 +14,36 @@ class MyApp extends StatelessWidget {
           child: Center(
             child: Column(
               // mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
-                  // height: 100,
-                  // width: 100,
-                  // margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(10),
-                  color: Colors.white,
-                  child: Text('Hello'),
+                  decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 20.0,
+                        spreadRadius: -12.0,
+                        offset: Offset(
+                          0.0,
+                          10.0,
+                        ),
+                      )
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.white,
+                    backgroundImage: AssetImage('images/dp.png'),
+                  ),
                 ),
-                Container(
-                  // height: 100,
-                  // width: 100,
-                  // margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  child: Text('Hello'),
-                ),
-                Container(
-                  // height: 100,
-                  // width: 100,
-                  // margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(10),
-                  color: Colors.orange,
-                  child: Text('Hello'),
+                Text(
+                  'Abhay Maurya',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontFamily: 'Pacifico',
+                  ),
                 ),
               ],
             ),
