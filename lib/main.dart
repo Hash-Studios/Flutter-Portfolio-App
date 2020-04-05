@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/services.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 void main() {
   runApp(App());
@@ -99,169 +100,181 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 background.evaluate(AlwaysStoppedAnimation(_controller.value)),
             body: SafeArea(
               child: Center(
-                child: Column(
-                  // mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
-                      elevation: 7,
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.white,
-                        backgroundImage: AssetImage('images/dp.png'),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            height: 150,
+                            width: 150,
+                            child: FlareActor("animations/dpbg.flr",
+                                alignment: Alignment.center,
+                                fit: BoxFit.contain,
+                                animation: "Alarm"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(21.0),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)),
+                              elevation: 0,
+                              child: CircleAvatar(
+                                radius: 50,
+                                backgroundColor: Colors.white,
+                                backgroundImage: AssetImage('images/dp.png'),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Abhay Maurya',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontFamily: 'Pacifico',
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                        child: Text(
+                          'Abhay Maurya',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontFamily: 'Pacifico',
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      '【=◈︿◈=】',
-                      style: TextStyle(
-                        color: Colors.white70,
-                        letterSpacing: 2.5,
-                        fontSize: 15,
-                        fontFamily: 'Source Sans Pro',
+                      Text(
+                        '【=◈︿◈=】',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          letterSpacing: 2.5,
+                          fontSize: 15,
+                          fontFamily: 'Source Sans Pro',
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                      width: 175,
-                      child: Divider(
-                        color: Colors.white54,
+                      SizedBox(
+                        height: 30,
+                        width: 175,
+                        child: Divider(
+                          color: Colors.white54,
+                        ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: _launchPhone,
-                      child: Card(
-                        color: Colors.white,
-                        elevation: 7,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(41, 10, 41, 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(right: 80),
-                                child: Icon(
+                      GestureDetector(
+                        onTap: _launchPhone,
+                        child: Tooltip(
+                                  message: 'Phone',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child: Card(
+                          color: Colors.white,
+                          elevation: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Icon(
                                   Icons.phone,
                                   color: Colors.blueGrey[300],
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 30),
-                                child: Text(
+                                Text(
                                   '+91 9027398389',
                                   style: TextStyle(color: Colors.blueGrey[300]),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: _launchURL,
-                      child: Card(
-                        margin: EdgeInsets.only(top: 8, bottom: 6),
-                        color: Colors.white,
-                        elevation: 7,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(right: 40),
-                                child: Icon(
+                      ),),
+                      GestureDetector(
+                        onTap: _launchURL,
+                        child: Tooltip(
+                                  message: 'Email',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child: Card(
+                          color: Colors.white,
+                          elevation: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Icon(
                                   Icons.mail,
                                   color: Colors.blueGrey[300],
                                 ),
+                                Text(
+                                  'maurya.abhay30@gmail.com',
+                                  style: TextStyle(color: Colors.blueGrey[300]),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),),
+                      Card(
+                        color: Colors.white,
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: _launchLI,
+                                child: Tooltip(
+                                  message: 'LinkedIn',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child:Icon(
+                                  FontAwesomeIcons.linkedin,
+                                  color: Colors.blueGrey[300],
+                                ),),
                               ),
-                              Text(
-                                'maurya.abhay30@gmail.com',
-                                style: TextStyle(color: Colors.blueGrey[300]),
-                              )
+                              GestureDetector(
+                                onTap: _launchGH,
+                                child: Tooltip(
+                                  message: 'Github',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child:Icon(
+                                  FontAwesomeIcons.githubSquare,
+                                  color: Colors.blueGrey[300],
+                                ),),
+                              ),
+                              GestureDetector(
+                                onTap: _launchTW,
+                                child: Tooltip(
+                                  message: 'Twitter',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child:Icon(
+                                  FontAwesomeIcons.twitterSquare,
+                                  color: Colors.blueGrey[300],
+                                ),),
+                              ),
+                              GestureDetector(
+                                onTap: _launchIG,
+                                child: Tooltip(
+                                  message: 'Instagram',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child:Icon(
+                                  FontAwesomeIcons.instagramSquare,
+                                  color: Colors.blueGrey[300],
+                                ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: _launchRD,
+                                child: Tooltip(
+                                  message: 'Reddit',
+                                  waitDuration: Duration(milliseconds: 500),
+                                  child: Icon(
+                                    FontAwesomeIcons.redditSquare,
+                                    color: Colors.blueGrey[300],
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      margin: EdgeInsets.only(top: 8),
-                      color: Colors.white,
-                      elevation: 7,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(24, 0, 15, 0),
-                              child: GestureDetector(
-                                onTap: _launchLI,
-                                child: Icon(
-                                  FontAwesomeIcons.linkedin,
-                                  color: Colors.blueGrey[300],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                              child: GestureDetector(
-                                onTap: _launchGH,
-                                child: Icon(
-                                  FontAwesomeIcons.githubSquare,
-                                  color: Colors.blueGrey[300],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                              child: GestureDetector(
-                                onTap: _launchTW,
-                                child: Icon(
-                                  FontAwesomeIcons.twitterSquare,
-                                  color: Colors.blueGrey[300],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                              child: GestureDetector(
-                                onTap: _launchIG,
-                                child: Icon(
-                                  FontAwesomeIcons.instagramSquare,
-                                  color: Colors.blueGrey[300],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 0, 23, 0),
-                              child: GestureDetector(
-                                onTap: _launchRD,
-                                child: Icon(
-                                  FontAwesomeIcons.redditSquare,
-                                  color: Colors.blueGrey[300],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
